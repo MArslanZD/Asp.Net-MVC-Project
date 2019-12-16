@@ -1,0 +1,52 @@
+﻿@model IEnumerable<JMA_Tech.Models.tblCustomer_JMA>
+
+@{
+    Layout = null;
+    WebGrid webGrid = new WebGrid(source: Model);
+}
+
+<div class="jumbotron">
+    <h1>JMA Technologies</h1>
+    <p>Sample Project Done by Arslan Zahid</p> 
+            
+</div>
+
+
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .Grid {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+
+        .Grid th {
+            background-color: #F7F7F7;
+            font-weight: bold;
+        }
+
+        .Grid th, .Grid td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .Grid, .Grid table td {
+            border: 0px solid #ccc;
+        }
+
+            .Grid th a, .Grid th a:visited {
+                color: #333;
+            }
+</style>
+<div>
+    @webGrid.GetHtml(
+        htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+        columns: webGrid.Columns(
+                 webGrid.Column("ID", "Customer Id"),
+                 webGrid.Column("Name", "Customer Name"),
+                 webGrid.Column("City", "City"),
+                 webGrid.Column("Country", "Country")))
+</div>
